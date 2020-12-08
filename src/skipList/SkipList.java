@@ -10,7 +10,11 @@ public class SkipList<T> implements List<T>{
 
     @Override
     public void insert(T data) {
-
+        if (size == 0) {
+            head = new Node<>(data);
+            size++;
+        }
+        // Todo main insertion logic
     }
 
     @Override
@@ -25,6 +29,14 @@ public class SkipList<T> implements List<T>{
 
     @Override
     public void print() {
-
+        if (size == 0){
+            System.out.println("empty");
+            return;
+        }
+        Node<T> node=head.downMost();
+        for (;node.right != null; node = node.right){
+            System.out.print(node.get()+" ");
+        }
+        System.out.println(node.get().toString());
     }
 }
